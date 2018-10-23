@@ -16,9 +16,10 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mongoose": "^5.3.6",
+    "pg": "^7.5.0",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "sequelize": "^4.41.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
