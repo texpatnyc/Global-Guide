@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './app.css';
-import WooHoo from './react.png';
+import WooHoo from './woohoo.jpg';
 
 export default class App extends Component {
   state = { username: null };
@@ -20,4 +20,4 @@ export default class App extends Component {
       </div>
     );
   } 
-}
+} 
