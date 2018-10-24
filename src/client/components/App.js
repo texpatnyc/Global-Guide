@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../app.css';
-import WooHoo from '../woohoo.jpg';
 import LocaleIndex from './LocaleIndex';
 import EatsView from './EatsView';
 import NewRestaurantForm from './NewRestaurantForm';
@@ -17,15 +16,13 @@ export default class App extends Component {
     this.getLocalesList = this.getLocalesList.bind(this);
     this.showOnClick = this.showOnClick.bind(this);
     this.setCurrentEats = this.setCurrentEats.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
+    this.editItem = this.editItem.bind(this);
     
   }
   componentDidMount() {
     this.getLocalesList();
     this.setCurrentEats(this.state.currentLocale.id)
-  }
-
-  componentDidUpdate() {
-    
   }
 
   getLocalesList() {
@@ -51,15 +48,29 @@ export default class App extends Component {
     this.setState({ currentLocale: { cityName: name, id: id } });;
   }
 
+  editItem() {
+
+  }
+
+  deleteItem(e) {
+    e.preventDefault();
+    const id = e.target.id;
+    fetch(`/api/restaurants/${id}`, {
+      method: "DELETE",
+      headers: { 'Content-type': 'application/json' }
+    }).then(result => {
+      this.setCurrentEats(this.state.currentLocale.id);
+    });
+  }
+
   render() {
     const { currentLocale, locales, currentDetails } = this.state;
     return (
       <div>
         {currentLocale ? <h1>{`The current Locale is  ${currentLocale.cityName}`}</h1> : <h1>Loading.. please wait!</h1>}
         <LocaleIndex handleClick={this.showOnClick} contents={locales} />
-        <EatsView contents={currentDetails.eats} />
+        <EatsView contents={currentDetails.eats} deleteItem={this.deleteItem} />
         <NewRestaurantForm className="newRestarantForm" cityId={this.state.currentLocale.id} setEats={this.setCurrentEats}/>
-        {/* <img src={WooHoo} alt="react" width="100%"/> */}
       </div>
     );
   } 

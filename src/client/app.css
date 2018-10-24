@@ -24,7 +24,7 @@ body {
   display: flex;
   margin-right: auto;
   margin-left: auto;
-  height: 80%;
+  max-height: 60%;
   width: 600px;
   overflow: auto;
   border: 5px solid black;
@@ -34,14 +34,24 @@ body {
 #eats-view ul {
   list-style: none;
   text-align: center;
+  width: 100%;
+  padding: 0;
+}
+
+#eats-view ul li {
+  margin-right: auto;
+  margin-left: auto; 
+  padding: 10px;
 }
 
 .single-restaurant {
-  width: 90%;
+  width: 80%;
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .newRestaurantForm {
@@ -52,4 +62,9 @@ body {
   margin-top: 10px;
   width: 400px;
   padding: 10px;
+}
+
+.editBtn, .deleteBtn {
+  margin-left: 5px;
+  margin-right: 5px;
 }

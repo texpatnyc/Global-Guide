@@ -5,10 +5,9 @@ class NewRestaurantForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cityId: props.cityId,
       name: '',
       address: '',
-      url: '',
+      url: 'http://',
       description: ''
     };
 
@@ -17,22 +16,41 @@ class NewRestaurantForm extends React.Component {
     this.setEats = this.props.setEats.bind(this);
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState(nextProps)
+  // }
+
   handleChange(event) {
     this.setState({ [event.target.name] : event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const { cityId, name, address, url, description } = this.state;
+    const { name, address, url, description } = this.state;
+    const { cityId } = this.props;
 
-    // alert( name + address + url + description + cityId );
+    let obj = {
+      name: name,
+      address: address,
+      url: url,
+      description,
+      cityId: cityId
+    }
+
+    
 
     fetch(`/api/restaurants/${cityId}`, {
       method: "POST",
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(obj),
       headers: { 'Content-type': 'application/json' }
     }).then(result => {
       this.setEats(cityId);
+      this.setState({
+        name: '',
+        address: '',
+        url: 'http://',
+        description: ''
+      })
     })
 
 
@@ -41,21 +59,22 @@ class NewRestaurantForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="newRestaurantForm">
+      <h1>Add New Listing</h1>
         <label>
           Name:
-          <input type="text" name="name" defaultValue={this.state.name} onChange={this.handleChange} />
+          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
         </label><br />
         <label>
           Address:
-          <input type="text" name="address" defaultValue={this.state.address} onChange={this.handleChange} />
+          <input type="text" name="address" value={this.state.address} onChange={this.handleChange} />
         </label><br />
         <label>
           Website:
-          <input type="text" name="url" defaultValue={this.state.url} onChange={this.handleChange} />
+          <input type="text" name="url" value={this.state.url} onChange={this.handleChange} />
         </label><br />
         <label>
           Description:
-          <textarea type="text" name="description" defaultValue={this.state.description} onChange={this.handleChange} />
+          <textarea type="text" name="description" value={this.state.description} onChange={this.handleChange} />
         </label><br />
         <input type="submit" value="Submit" />
       </form>
