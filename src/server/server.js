@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
 
 app.get('/api/locales', (req, res) => {
-  Locale.findAll({ attributes: ['cityName'] })
-    .then( (data) => { res.json(data) });
+  Locale.findAll({ attributes: ['cityName', 'id'] })
+    .then( (data) => { res.send(data) });
 })
 
 app.post('/api/locales', (req, res) => {
