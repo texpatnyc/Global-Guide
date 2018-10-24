@@ -4,7 +4,7 @@ const LocaleIndex = (props) => {
 
   let locales = props.contents;
   let cityNames = locales.map((locale, i) => (
-    <div onClick={props.handleClick} key={i} id={i} className='index-view-locale' id={'view-' + locale.cityName.toLowerCase()}>
+    <div onClick={props.handleClick} key={i} className='index-view-locale' id={locale.id}>
       {locale.cityName}
     </div>)
   );

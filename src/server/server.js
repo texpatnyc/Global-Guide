@@ -31,7 +31,8 @@ app.post('/api/locales', (req, res) => {
 
 app.get('/api/restaurants/:cityId', (req, res) => {
   const { cityId } = req.params;
-  Restaurant.findAll({ attributes: ['name', 'address', 'url'] }, { where: { cityId: cityId } })
+  console.log(cityId);
+  Restaurant.findAll({ attributes: ['name', 'address', 'url', 'description'], where: { cityId: cityId } })
     .then( (data) => { res.json(data) } );
 })
 

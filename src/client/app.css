@@ -17,3 +17,39 @@ body {
   border-radius: 10px;
   font-size: 2.5rem;
 }
+
+#eats-view {
+  margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  height: 80%;
+  width: 600px;
+  overflow: auto;
+  border: 5px solid black;
+  border-radius: 10px;
+}
+
+#eats-view ul {
+  list-style: none;
+  text-align: center;
+}
+
+.single-restaurant {
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.newRestaurantForm {
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 400px;
+  padding: 10px;
+}
