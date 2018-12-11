@@ -38,5 +38,13 @@
     "webpack": "^4.22.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/texpatnyc/Global-Guide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/texpatnyc/Global-Guide/issues"
+  },
+  "homepage": "https://github.com/texpatnyc/Global-Guide#readme"
 }
